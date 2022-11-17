@@ -4,11 +4,12 @@ import UseCallback from '../hooks/useCallback/useCallback';
 import UseMemo from '../hooks/useMemo/useMemo';
 import UseRef from '../hooks/useRef/useRef';
 import UseReducer from '../hooks/useReducer/useReducer';
+import UseEffect from '../hooks/useEffect/useEffect';
 
 export default function Main(props) {
     const [listItem, setListItem] = useState(null);
     const [selected, setSelected] = useState('useState');
-    const [choices] = useState(['useState', 'useCallback', 'useMemo', 'useRef', 'useReducer'])
+    const [choices] = useState(['useState', 'useCallback', 'useMemo', 'useRef', 'useReducer', 'useEffect'])
 
     const items: object[] = [
         {id: 1, name: 'Eggs', price: 2.39},
@@ -64,12 +65,14 @@ export default function Main(props) {
                 </div> :
                 selected === 'useCallback' ?
                     <UseCallback /> :
-                selected === 'useMemo' ? 
+                selected === 'useMemo' ?
                     <UseMemo /> :
-                selected === 'useRef' ? 
+                selected === 'useRef' ?
                     <UseRef /> :
-                selected === 'useReducer' ? 
-                    <UseReducer /> : null
+                selected === 'useReducer' ?
+                    <UseReducer /> :
+                selected === 'useEffect' ?
+                    <UseEffect /> : null
             }
         </main>
     );
