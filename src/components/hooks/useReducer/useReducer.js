@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useReducer } from 'react';
 
 const ACTIONS = {
@@ -5,6 +6,13 @@ const ACTIONS = {
     DECREMENT: 'decrement',
     USER_INPUT: 'userInput',
     C_COLOR: 'changeColor'
+}
+
+function getReq() {
+    axios.get('https://jsonplaceholder.typicode.com/users').then((resp) => {
+        const {data} = resp;
+        return data;
+    });
 }
 
 export default function UseReducer(props) {
@@ -43,6 +51,10 @@ export default function UseReducer(props) {
             }}/>
             <br />
             <span>The user input: {state.userInput}</span>
+            <br />
+            <button onClick={() => {
+                const data = getReq();
+            }}>Get Users</button>
 
         </div>
     );
